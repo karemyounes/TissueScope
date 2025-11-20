@@ -1,0 +1,50 @@
+/* SearchBar */
+
+ .SearchBar {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+ }
+
+  .SearchBar input {
+    width: 18%;
+    height: 30px;
+    border: none;
+    padding: 0;
+
+    background-color: rgba(255, 255,255, 0.8);
+
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+
+    border-radius: 5px;
+    outline: none;
+    
+    transition: 0.75s;
+  }
+
+  .SearchBar input::placeholder {
+    color: rgba(0, 0,0, 0.6);
+  }
+
+  .SearchBar input:focus::placeholder {
+    color: transparent;
+  }
+
+  .SearchBar input:focus {
+    transform: scale(1.05) ;
+  }
+
+  .SearchBar .SearchBarSubmit {
+    height: 25px;
+    border-radius: 5px;
+    outline: none;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+  }
