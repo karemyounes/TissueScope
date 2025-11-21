@@ -42,21 +42,53 @@
                     <img src="{{asset('storage/NoImage.png')}}" alt="shit">  
                 @endif
 
-                <div class="FirstRow">
-                    <span> {{$Product['ProductName']}} </span>
+                <div class="column First">
+
+                    <div class="element">
+                        <span> Name </span>
+                        <span> {{$Product['ProductName']}} </span>
+                    </div>
+
+                    <div class="element">
+                        <span> Category </span>
+                        <span> {{$Product['Category']['CategoryName']}} </span>
+                    </div>
+
+                    <div class="element">
+                        <span> Barcode </span>
+                        <span> {{$Product['Barcode']}} </span>
+                    </div>         
+
                 </div>
 
-                <div class="FirstRow">
-                    <span>{{$Product['BuyingPrice']}} SAR</span>
-                </div>
-
-                <div class="FirstRow">
+                <div class="column Second">
+                    <span> Description </span>
                     <span>{{$Product['Description']}}</span>
+
                 </div>
-                <form action="{{ route('product.show', $Product->ProductId) }}" method="GET" >
-                    @csrf
-                    <button>Click Me</button>
-                </form>
+
+                <div class="column Third">
+
+                    <div class="element">
+                        <span> Buying Price </span>
+                        <span>{{$Product['BuyingPrice']}} SAR</span>
+                    </div>
+
+                    <div class="element">
+                        <span> Selling Price </span>
+                        <span>{{$Product['SellingPrice']}} SAR</span>
+                    </div>
+
+                    <form action="{{ route('product.show', $Product->ProductId) }}" method="GET" >
+
+                        @csrf
+                        <button>Click Me</button>
+
+                    </form>
+
+                </div>
+
+                
             </div>
         @endforeach
     </div>

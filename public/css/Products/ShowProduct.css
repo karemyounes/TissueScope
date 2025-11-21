@@ -1,42 +1,159 @@
 @import url('../Layouts/MainBody.css');
 
+:root {
+    --HeadColor: #9d0208;
+}
+
 .Container {
     width: 100vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     padding: 15px;
     box-sizing: border-box;
-    flex-wrap: wrap;
 }
 
 .card {
-    width: 200px;
-    height: 300px;
-    background-color: rgba(0, 0,0, 0.2);
+    width:90vw;
+    height: 110px;
+    /* background-color: rgba(250, 250, 250); */
+    background-color: #e5e5e5d6;
 
-    margin-right: 50px;
     border-radius: 15px;
     margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 .card img {
     width: 200px;
-    height: 200px;
+    height: 100%;
 
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
+    border-radius: 15px;
 }
 
-.card .FirstRow {
+.card .column {
+    height: 100%;
+    width: calc( ( 100% - 260px ) / 3);
+}
+
+/* Start First Column */
+
+.card .First {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.card .First .element {
     width: 100%;
-    height: 20px;
-    margin-bottom: 5px;
-    background-color: rgba(255, 255,255, 0.6);
+    height: calc(85% / 3);
+
+    display: flex;
+    flex-direction: row;
+}
+
+.card .First .element span {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
-    border-radius: 5px;
 }
 
- 
+.card .First .element span:first-child {
+    width: 70px;
+    justify-content: flex-start;
+    padding-left: 8px;
+    box-sizing: border-box;
+
+    color: var(--HeadColor);
+}
+
+.card .First .element span:last-child {
+    width: calc(100% - 70px);
+}
+
+/* End First Column */
+
+/* Start Second Column */
+
+.card .Second {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card .Second span:first-child {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--HeadColor);
+}
+
+.card .Second span:last-child {
+    height: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* End Second Column */
+
+
+/* Start Third Column */
+
+
+.card .Third {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.card .Third .element {
+    width: 100%;
+    height: calc(85% / 3);
+
+    display: flex;
+    flex-direction: row;
+}
+
+.card .Third .element span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .Third .element span:first-child {
+    width: 105px;
+    justify-content: flex-start;
+    padding-left: 8px;
+    box-sizing: border-box;
+
+    color: var(--HeadColor);
+}
+
+.card .Third form {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .Third form button {
+    width: 50%;
+    height: 27px;
+    background-color: var(--HeadColor);
+    color: whitesmoke;
+    cursor: pointer;
+
+    letter-spacing: 2px;
+}
+
+/* End Third Column */

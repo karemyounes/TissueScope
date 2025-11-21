@@ -16,9 +16,7 @@ use App\http\Controllers\Products\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('Products.Product.CreateProduct');
-});
+Route::get('/', [ProductController::class,'index']);
 
 Route::get('/welcome', function () {
     return view('welcome');

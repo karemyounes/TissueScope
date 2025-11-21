@@ -17,11 +17,11 @@ class ProductController extends Controller
         // check if there is requests
         if ( count($request -> all()) == 0 )
             {
-                $Products = Product::get();
+                $Products = Product::with('Category:CategoryId,CategoryName')->get();
             }
         else {
                 // make variable to hold retrieved data
-                $Products = Product::query();   
+                $Products = Product::with('Category');   
             
                 // check if there is Product Name Request
                 if ( $request -> filled('ProductName') )
@@ -32,28 +32,26 @@ class ProductController extends Controller
                 // check if there is Category Name Request    
                 if ( $request->filled('CategoryName') )  
                     {
-                        $Products = $Products->where('ProductName', 'like' ,'%' . $request->ProductName . '%');
+                        $Products = $Products->where('ProductName', 'like' ,'%' . $request->ProductName . '%') ;
                     }
 
                 // check if there is Barcode Request
                 if ( $request->filled('Barcode') )  
                     {
-                        $Products = $Products->where('Barcode', 'like' ,'%' . $request->Barcode . '%');
+                        $Products = $Products->where('Barcode', 'like' ,'%' . $request->Barcode . '%') ;
                     }
 
                 // check if there is Starting Price Request
                 if ( $request->filled('StartingPrice') )  
                     {
-                        $Products = $Products->where('SellingPrice', '>=' , $request->StartingPrice) 
-                                           ;
+                        $Products = $Products->where('SellingPrice', '>=' , $request->StartingPrice) ;
                                             
                     }
 
                 // check if there is Ending Price Request
                 if ( $request->filled('EndingPrice') )  
                     {
-                        $Products = $Products->where('SellingPrice', '<=' , $request->EndingPrice)
-                                            ;
+                        $Products = $Products->where('SellingPrice', '<=' , $request->EndingPrice) ;
                     }
 
                 $Products = $Products -> get();
