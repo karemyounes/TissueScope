@@ -9,22 +9,20 @@
 </head>
 <body>
 
+
     <nav>
         @include('Layouts.NavBar')
     </nav>
 
-    @foreach ($errors as $error)
-        <p>{{ $error }}</p>
-    @endforeach
-        
-    <form class="form" action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="form" action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <input type="file" class="MainInput" placeholder="Brand Image" name="BrandLogo">
-        <input type="text" class="MainInput" placeholder="Brand Name" name="BrandName">
+        <input type="text" class="MainInput" placeholder="User Name" name="name">
+        <input type="text" class="MainInput" placeholder="E_Mail" name="email">
+        <input type="text" class="MainInput" placeholder="Password" name="password">
+        
         <input type="submit" value="submit" class="SubmitForm">
 
     </form>
-
 </body>
 </html>

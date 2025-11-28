@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\Products\BrandController;
 use App\http\Controllers\Products\CategoryController;
 use App\http\Controllers\Products\ProductController;
+use App\http\Controllers\UserController;
+use App\http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,21 +20,36 @@ use App\http\Controllers\Products\ProductController;
 
 Route::get('/', [ProductController::class,'index']);
 
+Route::get('loginPage', [LoginController::class,'LoginPage'])->name('loginPage');
+Route::post('Signup', [LoginController::class,'Signup'])->name('Signup');
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-// Start Brand Routes
-Route::resource('/brand' , BrandController::class)->except(['update']);
-Route::post('/brand/{id}', [BrandController::class,'update']);
-// End Brand Routes
+Route::group(['middleware' => 'auth'],function () {
 
-// Start Category Routes
-Route::resource('/category' , CategoryController::class)->except(['update']);
-Route::post('/category/{id}', [CategoryController::class,'update']);
-// End Category Routes
+    // Start Brand Routes
+    Route::resource('/brand' , BrandController::class)->except(['update']);
+    Route::post('/brand/{id}', [BrandController::class,'update']);
+    // End Brand Routes
 
-// Start Product Routes
-Route::resource('product' , ProductController::class)->except(['update']);
-Route::post('product/{id}', [ProductController::class,'update']);
-// End Product Routes
+    // Start Category Routes
+    Route::resource('/category' , CategoryController::class)->except(['update']);
+    Route::post('/category/{id}', [CategoryController::class,'update']);
+    // End Category Routes
+
+    // Start Product Routes
+    Route::resource('product' , ProductController::class)->except(['update']);
+    Route::post('product/{id}', [ProductController::class,'update']);
+    // End Product Routes
+
+    // Start user Routes
+    Route::resource('user' , UserController::class)->except(['update']);
+    Route::post('user/{id}', [UserController::class,'update']);
+    // End user Routes
+
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+});

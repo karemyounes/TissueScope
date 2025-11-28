@@ -1,4 +1,5 @@
 @import url('../Layouts/MainBody.css');
+@import url('../Layouts/MainInput.css');
 
 .form {
     width: 100%;
