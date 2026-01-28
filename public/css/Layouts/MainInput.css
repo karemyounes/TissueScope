@@ -1,0 +1,64 @@
+.MainInput {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background-color: #c4ced4;
+
+    width: 30vw;
+    height: 40px;
+
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    color: black;
+    font-size: 16px;
+    transition: 0.5s;
+    margin-bottom: 30px;
+}
+
+.MainInput::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+}
+
+.MainInput:focus { 
+    transform: scale(1.03);
+}
+
+.SubmitForm {
+    width: 300px;
+    height: 40px;
+    color: rgb(230, 230, 230);
+
+    background-color: rgb(7 64 93);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+    letter-spacing: 3px;
+}
+
+.SubmitForm:hover { 
+    transform: scale(1.03);
+}
+
+/* Drop Down List */
+
+label {
+    background-color: rgba(0,0,0,0.8);
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.EmptyDrop {
+    margin:0 20px 20px;
+    background-color: red;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
