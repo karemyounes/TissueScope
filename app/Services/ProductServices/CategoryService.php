@@ -3,6 +3,8 @@
 namespace App\Services\ProductServices;
 
 use App\Models\Products\Category;
+use App\Models\Products\Product;
+use Illuminate\Support\Facades\DB;
 
 class CategoryService {
 
@@ -14,35 +16,34 @@ class CategoryService {
     }
 
     public function create($request) {
-        
-        $imagePath = $request['path'];
 
         Category::create([
             'BrandId'           => $request['BrandId'],
             'CategoryName'      => $request['CategoryName'],
-            'CategoryImage'     => $imagePath,
+            'CategoryImage'     => $request['path'],
         ]);
 
     }
 
     public function update($request , $id) {
 
-        $Cat = Category::find($id);
-
-        $imagePath = $request['path'];
-
-        $Cat->update([
+        Category::where('CategoryId' , $id)->update([
             'BrandId'           => $request['BrandId'],
             'CategoryName'      => $request['CategoryName'],
-            'CategoryImage'     => $imagePath,
+            'CategoryImage'     => $request['path'],
         ]);
 
     }
 
     public function delete($id) {
 
-        $Category = Category::find($id);
-        $Category -> delete();
+        DB::transaction(function () use ($id) {
+            
+            Product::where('CategoryId' , $id)->delete() ;
+
+            Category::whereKey($id)->delete() ;
+
+        });
 
     }
 

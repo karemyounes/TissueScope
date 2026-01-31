@@ -3,6 +3,9 @@
 namespace App\Services\ProductServices ;
 
 use App\Models\Products\brand;
+use App\Models\Products\Category;
+use App\Models\Products\Product;
+use Illuminate\Support\Facades\DB;
 
 class BrandService {
 
@@ -24,30 +27,37 @@ class BrandService {
 
     public function create($request) {
 
-        $ImagePath = $request['path'];
-
         brand::create([
             'BrandName'   =>  $request['BrandName'],
-            'BrandLogo'  =>  $ImagePath,
+            'BrandLogo'   =>  $request['path'],
         ]);
     } 
 
     public function update($request , $id) {
-        $Brand = brand::find($id);
 
-        $ImagePath = $request['path'];
-
-        $Brand->update([
+        brand::where('BrandId', $id)->update([
             'BrandName' => $request['BrandName'],
-            'BrandLogo' => $ImagePath,
+            'BrandLogo' => $request['path'],
         ]);
     }
 
 
     public function delete($id) {
 
-        $Brand = brand::find($id);
-        $Brand->delete();
-        
+        DB::transaction(function () use ($id) {
+
+            Product::whereIn('CategoryId', function ($query) 
+                use ($id) {
+                    $query ->select('CategoryId')
+                           ->from('category')
+                           ->where('BrandId', $id);
+                }
+                    )->delete() ;
+
+            Category::where('BrandId', $id)->delete();
+
+            brand::whereKey($id)->delete();
+        });
+           
     }
 }

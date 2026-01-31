@@ -59,9 +59,7 @@ class ProductService {
         return $Products;
     }
 
-    public function create($request) {
-        
-        $ImagePath = $request['path'] ; 
+    public function create($request) { 
 
         Product::create([
             'CategoryId'    => $request['CategoryId'],
@@ -70,26 +68,23 @@ class ProductService {
             'BuyingPrice'   => $request['BuyingPrice'],
             'SellingPrice'  => $request['SellingPrice'],
             'Barcode'       => $request['Barcode'], 
-            'ProductImage'  => $ImagePath,
+            'ProductImage'  => $request['path'],
         ]);
+
     }
 
 
 
     public function update($request , $id) {
 
-        $Product = Product::find($id);
-
-        $ImagePath = $request['path'];
-
-        $Product->update([
+        Product::whereKey($id)->update([
             'CategoryId'    => $request['CategoryId'],
             'ProductName'   => $request['ProductName'],
             'Description'   => $request['Description'],
             'BuyingPrice'   => $request['BuyingPrice'],
             'SellingPrice'  => $request['SellingPrice'],
             'Barcode'       => $request['Barcode'],
-            'ProductImage'  => $ImagePath,
+            'ProductImage'  => $request['path'],
         ]);
         
     }
@@ -97,8 +92,7 @@ class ProductService {
 
 
     public function delete($id) {
-        $Product = Product::find($id);
-        $Product->delete();
+        Product::whereKey($id)->delete();
     }
 
 }
