@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Http\Controllers\Admin\Products;
+
+use App\Models\Admin\Products\Brand;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class GetBrandsForDropDownController extends Controller
+{
+    public function GetBrands () 
+    {
+        $Brands = Brand::select('BrandId','BrandName')->get();
+
+        return $Brands ;
+    }
+}

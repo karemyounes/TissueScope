@@ -14,17 +14,26 @@
     <nav>
         @include('Layouts.NavBar')
     </nav>
-
-    @foreach ($errors as $error)
-        <p>{{ $error }}</p>
-    @endforeach
         
     <form class="form" action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <img style="display: none;" id="Avatar"  >
         <span id="alert" style="display: none;" > Sorry you can only Select image file </span>
-        <input id="image" type="file" class="MainInput" placeholder="Brand Image" name="BrandLogo">
-        <input type="text" class="MainInput" placeholder="Brand Name" name="BrandName">
+        <div class="InputContainer">
+            @error('path')
+                <span class="Error"> {{ $errors->first('path') }} </span>
+            @enderror
+
+            <input id="image" type="file" class="MainInput" placeholder="Brand Image" name="BrandLogo" value="{{old('BrandLogo')}}">
+        </div>
+
+        <div class="InputContainer">
+            @error('BrandName')
+                <span class="Error"> {{ $errors->first('BrandName') }} </span>
+            @enderror
+
+            <input type="text" class="MainInput" placeholder="Brand Name" name="BrandName" value="{{old('BrandName')}}">
+        </div>
         <input type="submit" value="submit" class="SubmitForm">
         <input type="text" id="path" name="path" hidden>
     </form>

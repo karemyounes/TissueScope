@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\Products\BrandController;
-use App\http\Controllers\Products\CategoryController;
-use App\http\Controllers\Products\ProductController;
-use App\http\Controllers\UserController;
-use App\http\Controllers\LoginController;
-use App\Http\Controllers\Products\ControlUploadedImages;
+use App\http\Controllers\Admin\Products\BrandController;
+use App\http\Controllers\Admin\Products\CategoryController;
+use App\http\Controllers\Admin\Products\ProductController;
+use App\http\Controllers\Admin\UserController;
+use App\http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\Products\ControlUploadedImages;
 
 /*
 |--------------------------------------------------------------------------

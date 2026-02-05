@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('category', function (Blueprint $table) {
                 $table->BigIncrements('CategoryId');
                 $table->unsignedBigInteger('BrandId');
-                $table->string('CategoryName');
+                $table->string('CategoryName')->unique();
                 $table->string('CategoryImage');
                 $table->timestamps();
                 $table->softDeletes();

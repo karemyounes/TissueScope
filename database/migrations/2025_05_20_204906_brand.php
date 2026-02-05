@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('brand', function (Blueprint $table) {
                 $table->BigIncrements('BrandId');
-                $table->string('BrandName');
+                $table->string('BrandName')->unique();
                 $table->string('BrandLogo');
                 $table->timestamps();
                 $table->softDeletes();

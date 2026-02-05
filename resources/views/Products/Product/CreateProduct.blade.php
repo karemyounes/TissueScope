@@ -20,7 +20,14 @@
         @csrf
         <img style="display: none;" id="Avatar" >
         <span id="alert" style="display: none;" > Sorry you can only Select image file </span>
-        <input id="image" type="file" class="MainInput" placeholder="Product Image" name="ProductImage">
+
+        <div class="InputContainer">
+            @error('path')
+                <span class="Error"> {{ $errors->first('path') }} </span>
+            @enderror
+
+            <input id="image" type="file" class="MainInput" placeholder="Product Image" name="ProductImage">
+        </div>
 
         <label for="Categories">Choose a Category Name:</label>
 
@@ -39,11 +46,46 @@
             </select>
         @endif
 
-        <input type="text" class="MainInput" placeholder="Product Name" name="ProductName">
-        <input type="text" class="MainInput" placeholder="Buying Price" name="BuyingPrice">
-        <input type="text" class="MainInput" placeholder="Selling Price" name="SellingPrice">
-        <input type="text" class="MainInput" placeholder="Barcode" name="Barcode">
-        <input type="text" class="MainInput" placeholder="Description" name="Description">
+        <div class="InputContainer">
+            @error('ProductName')
+                <span class="Error"> {{ $errors->first('ProductName') }} </span>
+            @enderror
+
+            <input type="text" class="MainInput" placeholder="Product Name" name="ProductName" value="{{old('ProductName')}}">
+        </div>
+    
+        <div class="InputContainer">
+            @error('BuyingPrice')
+                <span class="Error"> {{ $errors->first('BuyingPrice') }} </span>
+            @enderror
+
+            <input type="text" class="MainInput" placeholder="Buying Price" name="BuyingPrice" value="{{old('BuyingPrice')}}">
+        </div>
+
+        <div class="InputContainer">
+            @error('SellingPrice')
+                <span class="Error"> {{ $errors->first('SellingPrice') }} </span>
+            @enderror
+
+            <input type="text" class="MainInput" placeholder="Selling Price" name="SellingPrice" value="{{old('SellingPrice')}}">
+        </div>
+
+        <div class="InputContainer">
+            @error('Barcode')
+                <span class="Error"> {{ $errors->first('Barcode') }} </span>
+            @enderror
+
+            <input type="text" class="MainInput" placeholder="Barcode" name="Barcode" value="{{old('Barcode')}}">
+        </div>
+
+        <div class="InputContainer">
+            @error('Description')
+                <span class="Error"> {{ $errors->first('Description') }} </span>
+            @enderror
+
+            <input type="text" class="MainInput" placeholder="Description" name="Description" value="{{old('Description')}}">
+        </div>
+        
         <input type="submit" value="submit" class="SubmitForm">
         <input type="text" id="path" name="path" hidden>
 

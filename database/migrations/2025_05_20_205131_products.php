@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('product', function (Blueprint $table) {
                 $table->BigIncrements('ProductId');
                 $table->unsignedBigInteger('CategoryId');
-                $table->string('ProductName');
+                $table->string('ProductName')->unique();
                 $table->string('Description');
                 $table->float('BuyingPrice');
                 $table->float('SellingPrice');
-                $table->string('Barcode');
+                $table->string('Barcode')->unique();
                 $table->string('ProductImage');
                 $table->timestamps();
                 $table->softDeletes();

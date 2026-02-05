@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->string('CustomerName');
                 $table->string('CustomerPhone');
                 $table->string('CustomerMail');
-                $table->string('CustomerImage');
+                $table->boolean('CustomerGender');
                 $table->timestamps();
                 $table->softDeletes();
             });

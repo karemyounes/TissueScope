@@ -21,7 +21,15 @@
 
         <img style="display: none;" id="Avatar" >
         <span id="alert" style="display: none;" > Sorry you can only Select image file </span>
-        <input id="image" type="file" class="MainInput" placeholder="Category Image" name="CategoryImage">
+
+        <div class="InputContainer">
+            @error('path')
+                <span class="Error"> {{ $errors->first('path') }} </span>
+            @enderror
+
+            <input id="image" type="file" class="MainInput" placeholder="Category Image" name="CategoryImage">
+        </div>
+
         
         <label for="Brands">Choose a Brand Name </label>
 
@@ -39,7 +47,14 @@
 
         @endif
         
-        <input type="text" class="MainInput" placeholder="Category Name" name="CategoryName">
+        <div class="InputContainer">
+            @error('CategoryName')
+                <span class="Error"> {{ $errors->first('CategoryName') }} </span>
+            @enderror
+
+            <input type="text" class="MainInput" placeholder="Category Name" name="CategoryName" value="{{old('CategoryName')}}">
+        </div>
+        
 
         <input type="submit" value="submit" class="SubmitForm">
         <input type="text" id="path" name="path" hidden>

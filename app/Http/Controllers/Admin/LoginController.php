@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Models\Admin\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller {
+
+    public function LoginPage() {
+        return view('Users.LoginPage');
+    }
+
+
+
+    public function Signup(Request $request) {
+
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $request -> session() -> regenerate();
+            return redirect('/product');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+
+
+    }
+
+
+    public function logout(Request $request) {
+        
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('loginPage'); // Redirect to your login page
+    }
+
+}
