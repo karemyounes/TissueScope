@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Customers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\Admin\Products\BrandController;
 use App\http\Controllers\Admin\Products\CategoryController;
@@ -7,6 +8,7 @@ use App\http\Controllers\Admin\Products\ProductController;
 use App\http\Controllers\Admin\UserController;
 use App\http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\Products\ControlUploadedImages;
+use App\Http\Controllers\Admin\Stores\StoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,16 @@ Route::group(['middleware' => 'auth'],function () {
     Route::resource('user' , UserController::class)->except(['update','create','store']);
     Route::post('user/{id}', [UserController::class,'update'])->name('user.update');
     // End user Routes
+    
+    // Start Customer Routes
+    Route::resource('customer' , CustomerController::class)->except(['update']);
+    Route::post('customer/{id}', [CustomerController::class,'update'])->name('customer.update');
+    // End Customer Routes
+    
+    // Start Store Routes
+    Route::resource('store' , StoresController::class)->except(['update']);
+    Route::post('store/{store}', [StoresController::class,'update'])->name('store.update');
+    // End Store Routes
 
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

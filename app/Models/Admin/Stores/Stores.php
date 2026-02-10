@@ -13,11 +13,14 @@ class Stores extends Model
 
     protected $table = 'store';
 
-    protected $primarykey = 'StoreId';
+    protected $primaryKey = 'StoreId';
 
     protected $fillable = [
         'StoreId',
+        'StorePhone',
+        'StoreAddress',
         'StoreName',
+        'StoreCode',
         'IsBranch',
     ];
 

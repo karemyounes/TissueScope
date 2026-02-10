@@ -9,7 +9,7 @@ class ProductService {
 
     public function Search($request) {
         // make variable to hold retrieved data
-        $Products = Product::with('Category');   
+        $Products = Product::with('Category');
     
         // check if there is Product Name Request
         if ( $request -> filled('ProductName') )
@@ -50,13 +50,11 @@ class ProductService {
     public function index($request) {
         if ( count($request -> all()) == 0 )
             {
-                $Products = Product::with('Category:CategoryId,CategoryName')->get();
+                return Product::with('Category:CategoryId,CategoryName')->get();
             }
         else {
-                $Products = $this->Search($request);
+                return $this->Search($request);
             }
-
-        return $Products;
     }
 
     public function create($request) { 

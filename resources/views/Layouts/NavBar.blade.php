@@ -39,8 +39,8 @@
                         <span class="btn" onclick="dropDown('Customers')">Customers</span>
 
                         <div class="menu" id="Customers">
-                            {{-- <a href="{{ route('customer.create') }}">Create Customer</a> --}}
-                            {{-- <a href="{{ route('customer.index') }}">View Customers</a> --}}
+                             <a href="{{ route('customer.create') }}">Create Customer</a>
+                             <a href="{{ route('customer.index') }}">View Customers</a>
                         </div>
                     </div>
 
@@ -48,8 +48,8 @@
                         <span class="btn" onclick="dropDown('Stores')">Stores</span>
 
                         <div class="menu" id="Stores">
-                            {{-- <a href="{{ route('store.create') }}">Create Store</a> --}}
-                            {{-- <a href="{{ route('store.index') }}">View Stores</a> --}}
+                             <a href="{{ route('store.create') }}">Create Store</a> 
+                             <a href="{{ route('store.index') }}">View Stores</a> 
                         </div>
                     </div>
 

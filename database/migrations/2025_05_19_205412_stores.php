@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('store', function (Blueprint $table) {
                 $table->BigIncrements('StoreId');
                 $table->string('StoreName');
+                $table->string('StoreAddress');
+                $table->string('StorePhone');
+                $table->string('StoreCode');
                 $table->boolean('IsBranch');
                 $table->timestamps();
                 $table->softDeletes();

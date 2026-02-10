@@ -21,7 +21,7 @@ class Customer extends Model
         'CustomerGender',
     ] ;
 
-    protected $primarykey = 'CustomerId';
+    protected $primaryKey = 'CustomerId';
 
     public function Basket () {
 
